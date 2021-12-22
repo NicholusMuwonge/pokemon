@@ -3,19 +3,17 @@ import {
   POKEMON_LOADING,
   POKEMON_SUCCESS,
   PokemonDispatchTypes,
-  PokemonType,
+  resultsType,
 } from "./actionTypes";
 
 interface initialStateInterface {
   loading: boolean;
-  results: PokemonType | any[];
-  count?: number;
+  results: resultsType|any[];
 }
 
 const defaultState: initialStateInterface = {
   loading: false,
   results: [],
-  count: 0,
 };
 
 const pokemonsReducer = (
@@ -38,8 +36,7 @@ const pokemonsReducer = (
       return {
         ...state,
         loading: false,
-        results: action.payload.results,
-        count: action.payload.count,
+        results: action.payload,
       };
     default:
       return state;

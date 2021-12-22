@@ -5,32 +5,40 @@ import {
   POKEMON_SUCCESS,
   PokemonDispatchTypes,
   resultsType,
+  pokemonDetailsType,
+  imageBaseUrl,
 } from "./actionTypes";
 import Api from "../../axios/api";
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
+type updatedResType = {
+  allUrls: string[];
+  results:
+    | {
+        name: string;
+        image: string;
+      }[]
+    | any[];
+};
 
-const getExtraDetails = (arr: resultsType) => {
-  let updatedResult: resultsType = {
-    count: arr.count,
+
+const getExtraDetails = (arr: updatedResType): updatedResType => {
+  let updatedResult: updatedResType = {
     allUrls: [],
-    results: arr.results,
+    results: [],
   };
-  let allUrls: Promise<AxiosResponse<any, any>>[] = [];
+  let allUrls: any[] = [];
   let updatedPokemonDetailsArr: {
     name: string;
     image: string;
-    url: string;
   }[] = [];
   for (let pokemon of arr.results) {
-    // pick id from returned results
-    const pokemonId = pokemon.url.split("/").at(-2);
+    const pokemonId = pokemon?.url?.split("/").at(-2);
     let pokemonDetails = {
       name: pokemon.name,
-      url: pokemon.url,
-      image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonId}.svg`,
+      image: imageBaseUrl+`${pokemonId}.svg`,
     };
     updatedPokemonDetailsArr.push(pokemonDetails);
-    allUrls.push(axios.get(pokemon["url"]));
+    allUrls.push(pokemon?.url);
   }
   updatedResult["allUrls"] = allUrls;
   updatedResult["results"] = updatedPokemonDetailsArr;
@@ -48,13 +56,46 @@ export const getAllPokemons = ({
   try {
     const response = await Api.getPokemonsByPage({ limit, offset });
     const updatedResults = getExtraDetails(response.data);
-    console.log(updatedResults.allUrls, "---------");
-
-    dispatch({ type: POKEMON_SUCCESS, payload: updatedResults });
+    console.log(updatedResults);
+    dispatch({ type: POKEMON_SUCCESS, payload: updatedResults.results });
+    if (updatedResults) {
+      const allUrls = updatedResults?.allUrls!;
+      const res = await getAllPokemonDetails(allUrls);
+      dispatch({ type: POKEMON_SUCCESS, payload: res });
+    }
   } catch (err: any) {
     dispatch({
       type: POKEMON_FAIL,
       error: err.response,
     });
   }
+};
+
+export const getAllPokemonDetails = async (
+  allUrls: string[]
+): Promise<resultsType> => {
+  const pokemonWithDetails: any[] = [];
+  try {
+    const allUrlsChangedToAxiosInstances: any[] = [];
+    allUrls.forEach((url) =>
+      allUrlsChangedToAxiosInstances.push(axios.get(url))
+    );
+    const pokemonDetails = await Promise.all(allUrlsChangedToAxiosInstances);
+    for (let pokemon of pokemonDetails) {
+      const updatedDataObject: pokemonDetailsType = {};
+      updatedDataObject["abilities"] = pokemon.data.abilities;
+      updatedDataObject["id"] = pokemon.data.id;
+      updatedDataObject["name"] = pokemon.data.name;
+      updatedDataObject["weight"] = pokemon.data.weight;
+      updatedDataObject["moves"] = pokemon.data.moves;
+      updatedDataObject["stats"] = pokemon.data.stats;
+      updatedDataObject["types"] = pokemon.data.types;
+      updatedDataObject["species"] = pokemon.data.species;
+      updatedDataObject["image"] = imageBaseUrl+`${pokemon.data.id}.svg`;
+      pokemonWithDetails.push(updatedDataObject);
+    }
+  } catch (err: any) {
+    return err
+  }
+  return pokemonWithDetails;
 };
