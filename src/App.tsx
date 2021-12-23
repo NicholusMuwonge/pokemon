@@ -6,12 +6,14 @@ import {
 } from "react-router-dom";
 import AllPokemonsContainer from "./components/allPokemons/AllPokemonsContainers";
 import './App.css';
+import SinglePokemonDetailsContainer from "./components/singlePokemonDetails/SinglePokemonDetailsContainer";
 
 const App = () => (
   <div className="App">
     <Router>
       <Switch>
         <Route path="/" element={<AllPokemonsContainer />} />
+        <Route path="/pokemon/:pokemonName" element={<SinglePokemonDetailsContainer />} />
       </Switch>
     </Router>
   </div>

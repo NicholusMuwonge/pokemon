@@ -4,8 +4,8 @@ import PokemonDetailsCard from "./PokemonDetailsCard";
 import { resultsType } from "../actionTypes";
 import { allPokemonsStyles } from "./styles";
 
-const AllPokemonsComponent: React.FC<{ allPokemons: resultsType }> = ({
-  allPokemons,
+const AllPokemonsComponent: React.FC<{ allPokemons: resultsType}> = ({
+  allPokemons
 }) => {
   return (
     <div>
@@ -18,6 +18,7 @@ const AllPokemonsComponent: React.FC<{ allPokemons: resultsType }> = ({
                   name={pokemon?.name}
                   image={pokemon?.image}
                   types={pokemon?.types}
+                  key={`${pokemon?.name}`}
                 />
               ))
             : null}

@@ -9,11 +9,13 @@ const AllPokemonsContainer: React.FC = () =>{
     const allPokemons = useSelector((centralState: RootStore)=>centralState.pokemons.results)
     useEffect(()=>{
         dispatch(getAllPokemons({offset: 0}))
-    },[])
+    },[dispatch])
     return(
+        <>
         <AllPokemonsComponent 
         allPokemons={allPokemons}
         />
+        </>
     )
 }
 
