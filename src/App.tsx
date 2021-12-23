@@ -5,6 +5,7 @@ import {
   Routes as Switch,
 } from "react-router-dom";
 import AllPokemonsContainer from "./components/allPokemons/AllPokemonsContainers";
+import './App.css';
 
 const App = () => (
   <div className="App">
