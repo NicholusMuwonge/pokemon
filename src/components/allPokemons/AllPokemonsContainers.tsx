@@ -11,7 +11,9 @@ const AllPokemonsContainer: React.FC = () =>{
         dispatch(getAllPokemons({offset: 0}))
     },[])
     return(
-        <AllPokemonsComponent />
+        <AllPokemonsComponent 
+        allPokemons={allPokemons}
+        />
     )
 }
 

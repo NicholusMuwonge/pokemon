@@ -11,9 +11,9 @@ export type resultsType = {
     id?: number;
     weight?: number;
     moves?: movesType;
-    stats?:statsType
-    types?: typesType
-    species?: speciesType
+    stats?:statsType;
+    types?: typesType[];
+    species?: speciesType[];
 }[];
 export type abilitiesType={
   ability: { name: string };
@@ -44,10 +44,10 @@ export type pokemonDetailsType = {
   id?: number;
   name?: string;
   weight?: number;
-  moves?: movesType
-  stats?: statsType
-  types?: typesType
-  species?: speciesType
+  moves?: movesType;
+  stats?: statsType;
+  types?: typesType[];
+  species?: speciesType[];
   image?: string
 };
 

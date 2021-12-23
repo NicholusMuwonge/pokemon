@@ -56,7 +56,6 @@ export const getAllPokemons = ({
   try {
     const response = await Api.getPokemonsByPage({ limit, offset });
     const updatedResults = getExtraDetails(response.data);
-    console.log(updatedResults);
     dispatch({ type: POKEMON_SUCCESS, payload: updatedResults.results });
     if (updatedResults) {
       const allUrls = updatedResults?.allUrls!;
