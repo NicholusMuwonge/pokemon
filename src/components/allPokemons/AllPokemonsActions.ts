@@ -48,7 +48,7 @@ const getExtraDetails = (arr: updatedResType): updatedResType => {
 type getAllPokemonsParams = { offset: number; limit?: number };
 export const getAllPokemons = ({
   offset = 0,
-  limit = 16,
+  limit = 12,
 }: getAllPokemonsParams) => async (
   dispatch: Dispatch<PokemonDispatchTypes>
 ): Promise<void> => {

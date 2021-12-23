@@ -13,14 +13,14 @@ export type resultsType = {
     moves?: movesType;
     stats?:statsType;
     types?: typesType[];
-    species?: speciesType[];
+    species?: speciesType;
 }[];
 export type abilitiesType={
   ability: { name: string };
 }[];
 
 export type movesType={
-  name: string;
+  move: {name: string;}
 }[];
 
 export type statsType= {
@@ -47,7 +47,7 @@ export type pokemonDetailsType = {
   moves?: movesType;
   stats?: statsType;
   types?: typesType[];
-  species?: speciesType[];
+  species?: speciesType;
   image?: string
 };
 

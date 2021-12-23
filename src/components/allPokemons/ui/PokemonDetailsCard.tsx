@@ -1,16 +1,18 @@
 import * as React from "react";
-import { Chip, Divider, Paper, Skeleton } from "@mui/material";
+import { Chip, Paper, Skeleton } from "@mui/material";
 import CallMadeTwoToneIcon from "@mui/icons-material/CallMadeTwoTone";
 import Typography from "@mui/material/Typography";
 import { pokemonDetailsType } from "../actionTypes";
 import { RootStore } from "../../../redux/store";
 import { useSelector } from "react-redux";
 import { pokemonCardStyles } from "./styles";
+import { useNavigate } from "react-router-dom";
 
 const PokemonDetailsCard = ({ name, image, types }: pokemonDetailsType) => {
   const loading = useSelector(
     (centralState: RootStore) => centralState.pokemons.loading
   );
+  const navigate = useNavigate()
   return (
     <Paper
       className="parent"
@@ -41,6 +43,7 @@ const PokemonDetailsCard = ({ name, image, types }: pokemonDetailsType) => {
               label={type.type.name}
               style={pokemonCardStyles.typeChipStyle}
               variant="outlined"
+              key={`${type.type.name}`}
             />
           ))
         ) : (
@@ -50,7 +53,7 @@ const PokemonDetailsCard = ({ name, image, types }: pokemonDetailsType) => {
       <Paper
         style={pokemonCardStyles.bottomSection}
         elevation={1}
-        // onClick={handleClickOpen}
+        onClick={()=>navigate(`/pokemon/${name}`)}
       >
         {loading ? (
           <Skeleton variant="text" width={200} />
