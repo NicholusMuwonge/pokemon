@@ -13,6 +13,7 @@ const App = () => (
     <Router>
       <Switch>
         <Route path="/" element={<AllPokemonsContainer />} />
+        <Route path="/pokemons/page/:page" element={<AllPokemonsContainer />} />
         <Route path="/pokemon/:pokemonName" element={<SinglePokemonDetailsContainer />} />
       </Switch>
     </Router>

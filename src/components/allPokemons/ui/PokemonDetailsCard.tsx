@@ -6,13 +6,15 @@ import { pokemonDetailsType } from "../actionTypes";
 import { RootStore } from "../../../redux/store";
 import { useSelector } from "react-redux";
 import { pokemonCardStyles } from "./styles";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const PokemonDetailsCard = ({ name, image, types }: pokemonDetailsType) => {
   const loading = useSelector(
     (centralState: RootStore) => centralState.pokemons.loading
   );
   const navigate = useNavigate()
+  const {page} = useParams()
+  
   return (
     <Paper
       className="parent"
@@ -35,8 +37,24 @@ const PokemonDetailsCard = ({ name, image, types }: pokemonDetailsType) => {
           />
         )}
       </div>
-      <div style={pokemonCardStyles.typesContainer}>
-        <i>Types</i>:{" "}
+      {loading ? (
+        <Skeleton variant="text" width={200} height={50} style={{marginLeft: "5%"}} />
+      ) : (
+        <Typography
+          style={pokemonCardStyles.nameStyle}
+          color="text.secondary"
+          gutterBottom
+        >
+          {name}
+        </Typography>
+      )}
+      <Paper
+        style={pokemonCardStyles.bottomSection}
+        elevation={0}
+        onClick={()=>navigate(`/pokemon/${name}`,  {state: {from: page??'1'}})}
+      >
+        <div style={pokemonCardStyles.typesContainer}>
+        <b style={{marginRight: "5%"}}>Types</b>{"  "}
         {types ? (
           types.map((type) => (
             <Chip
@@ -47,25 +65,9 @@ const PokemonDetailsCard = ({ name, image, types }: pokemonDetailsType) => {
             />
           ))
         ) : (
-          <Skeleton variant="text" width={200} />
+          <Skeleton variant="text" width={200} height={50} />
         )}
       </div>
-      <Paper
-        style={pokemonCardStyles.bottomSection}
-        elevation={1}
-        onClick={()=>navigate(`/pokemon/${name}`)}
-      >
-        {loading ? (
-          <Skeleton variant="text" width={200} />
-        ) : (
-          <Typography
-            style={pokemonCardStyles.nameStyle}
-            color="text.secondary"
-            gutterBottom
-          >
-            {name}
-          </Typography>
-        )}
         <div style={pokemonCardStyles.redirectIconContainer}>
           <CallMadeTwoToneIcon style={pokemonCardStyles.iconStyle} />
         </div>

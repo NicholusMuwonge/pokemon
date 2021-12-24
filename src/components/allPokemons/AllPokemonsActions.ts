@@ -7,6 +7,7 @@ import {
   resultsType,
   pokemonDetailsType,
   imageBaseUrl,
+  LIMIT,
 } from "./actionTypes";
 import Api from "../../axios/api";
 import axios from "axios";
@@ -48,7 +49,7 @@ const getExtraDetails = (arr: updatedResType): updatedResType => {
 type getAllPokemonsParams = { offset: number; limit?: number };
 export const getAllPokemons = ({
   offset = 0,
-  limit = 12,
+  limit = LIMIT,
 }: getAllPokemonsParams) => async (
   dispatch: Dispatch<PokemonDispatchTypes>
 ): Promise<void> => {
@@ -56,11 +57,11 @@ export const getAllPokemons = ({
   try {
     const response = await Api.getPokemonsByPage({ limit, offset });
     const updatedResults = getExtraDetails(response.data);
-    dispatch({ type: POKEMON_SUCCESS, payload: updatedResults.results });
+    dispatch({ type: POKEMON_SUCCESS, payload: updatedResults.results, count: response.data.count});
     if (updatedResults) {
       const allUrls = updatedResults?.allUrls!;
       const res = await getAllPokemonDetails(allUrls);
-      dispatch({ type: POKEMON_SUCCESS, payload: res });
+      dispatch({ type: POKEMON_SUCCESS, payload: res, count: response.data.count });
     }
   } catch (err: any) {
     dispatch({
@@ -90,7 +91,7 @@ export const getAllPokemonDetails = async (
       updatedDataObject["stats"] = pokemon.data.stats;
       updatedDataObject["types"] = pokemon.data.types;
       updatedDataObject["species"] = pokemon.data.species;
-      updatedDataObject["image"] = imageBaseUrl+`${pokemon.data.id}.svg`;
+      updatedDataObject["image"] = imageBaseUrl+`${pokemon.data.id}.png`;
       pokemonWithDetails.push(updatedDataObject);
     }
   } catch (err: any) {

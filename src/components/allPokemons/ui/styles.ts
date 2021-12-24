@@ -39,6 +39,8 @@ export const pokemonCardStyles = {
     textTransform: "capitalize" as const,
     paddingLeft: "10%",
     marginTop: "2%",
+    display: "flex",
+    alignItems: "center"
   },
   typeChipStyle: {
     backgroundColor: "#4874f4",
@@ -53,6 +55,7 @@ export const pokemonCardStyles = {
     borderBottomRightRadius: "1rem",
     borderBottomLeftRadius: "1rem",
     cursor: "pointer",
+    paddingBottom: "2%"
   },
   nameStyle: {
     fontSize: 24,
@@ -81,5 +84,5 @@ export const pokemonCardStyles = {
 
 export const headerStyles = {
   containerStyle: { display: "flex", justifyContent: "center" },
-  imageStyle: { width: "400px", height: "200px", marginTop: "-2%" },
+  imageStyle: { width: "400px", height: "200px", marginTop: "-2%", cursor:"pointer" },
 };

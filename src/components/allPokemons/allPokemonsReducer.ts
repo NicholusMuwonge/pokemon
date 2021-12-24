@@ -9,11 +9,13 @@ import {
 interface initialStateInterface {
   loading: boolean;
   results: resultsType|any[];
+  count: number
 }
 
 const defaultState: initialStateInterface = {
   loading: false,
   results: [],
+  count: 0
 };
 
 const pokemonsReducer = (
@@ -26,6 +28,7 @@ const pokemonsReducer = (
         ...state,
         loading: false,
         results: [],
+        count: 0
       };
     case POKEMON_LOADING:
       return {
@@ -37,6 +40,7 @@ const pokemonsReducer = (
         ...state,
         loading: false,
         results: action.payload,
+        count: action.count??state.count
       };
     default:
       return state;
