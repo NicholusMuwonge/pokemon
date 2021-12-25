@@ -1,4 +1,4 @@
 export const searchStyles = {
   container: { display: "flex", padding: "1%", justifyContent: "center" },
-  searchBar: { width: "80%" },
+  searchBar: { width: "86%" },
 };
