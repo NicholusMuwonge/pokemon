@@ -3,6 +3,6 @@ export const paginationStyle = {
     display: "flex",
     justifyContent: "center",
     paddingTop: "2%",
-    paddingBottom: "2%",
+    marginBottom: "6%",
   },
 };
