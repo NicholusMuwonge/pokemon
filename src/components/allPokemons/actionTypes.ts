@@ -1,20 +1,11 @@
 export const POKEMON_LOADING = "POKEMON_LOADING";
 export const POKEMON_FAIL = "POKEMON_FAIL";
 export const POKEMON_SUCCESS = "POKEMON_SUCCESS";
-export const imageBaseUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/`
+export const imageBaseUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/`
+export const LIMIT = 12;
 
-export type resultsType = {
-    name?: string;
-    url?: string;
-    image?: string;
-    abilities?:abilitiesType;
-    id?: number;
-    weight?: number;
-    moves?: movesType;
-    stats?:statsType;
-    types?: typesType[];
-    species?: speciesType;
-}[];
+export type resultsType = pokemonDetailsType[];
+
 export type abilitiesType={
   ability: { name: string };
 }[];
@@ -63,6 +54,7 @@ export interface PokemonFail {
 export interface PokemonSuccess {
   type: typeof POKEMON_SUCCESS;
   payload: resultsType;
+  count: number
 }
 
 export type PokemonDispatchTypes =
