@@ -26,6 +26,8 @@ const PaginationContainer = () => {
   React.useEffect(() => {
     if (parseInt(page)) {
       setCurrentPage(parseInt(page));
+    } else {
+      setCurrentPage(1);
     }
   }, [page, dispatch]);
   return (

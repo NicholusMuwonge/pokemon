@@ -36,7 +36,7 @@ const getExtraDetails = (arr: updatedResType): updatedResType => {
     const pokemonId = pokemon?.url?.split("/").at(-2);
     let pokemonDetails = {
       name: pokemon.name,
-      image: imageBaseUrl+`${pokemonId}.svg`,
+      image: imageBaseUrl+`${pokemonId}.png`,
     };
     updatedPokemonDetailsArr.push(pokemonDetails);
     allUrls.push(pokemon?.url);
