@@ -3,13 +3,15 @@ import Header from "./Header";
 import PokemonDetailsCard from "./PokemonDetailsCard";
 import { resultsType } from "../actionTypes";
 import { allPokemonsStyles } from "./styles";
+import SearchBar from "../../search/SearchContainer";
 
-const AllPokemonsComponent: React.FC<{ allPokemons: resultsType}> = ({
-  allPokemons
+const AllPokemonsComponent: React.FC<{ allPokemons: resultsType }> = ({
+  allPokemons,
 }) => {
   return (
     <div>
       <Header />
+      <SearchBar />
       <section className="cards" style={allPokemonsStyles.cardsContainer}>
         <div style={allPokemonsStyles.cardsSubContainer}>
           {allPokemons.length
