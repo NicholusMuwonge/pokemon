@@ -33,7 +33,7 @@ const getExtraDetails = (arr: updatedResType): updatedResType => {
     image: string;
   }[] = [];
   for (let pokemon of arr.results) {
-    const pokemonId = pokemon?.url?.split("/").at(-2);
+    const pokemonId = pokemon?.url?.split("/").reverse()[1];
     let pokemonDetails = {
       name: pokemon.name,
       image: imageBaseUrl+`${pokemonId}.png`,
@@ -64,6 +64,8 @@ export const getAllPokemons = ({
       dispatch({ type: POKEMON_SUCCESS, payload: res, count: response.data.count });
     }
   } catch (err: any) {
+    console.log(err,"THEHEHHEHEHHEE");
+    
     dispatch({
       type: POKEMON_FAIL,
       error: err.response,
