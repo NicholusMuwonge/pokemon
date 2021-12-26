@@ -13,7 +13,8 @@ export const allPokemonsStyles = {
     alignSelf: "center",
   },
   loading: {textAlign: "center" as const, fontFamily: "pokemon", fontSize:20, fontWeight:"100"},
-  error: {textAlign: "center" as const, color:"red",fontFamily: "pokemon", fontSize:20, fontWeight:"100"}
+  error: {textAlign: "center" as const, color:"red",fontFamily: "pokemon", fontSize:20, fontWeight:"100"},
+  page: {textAlign: "center" as const}
 };
 
 export const pokemonCardStyles = {
