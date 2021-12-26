@@ -38,9 +38,14 @@ Endpoint: list-pokemons.netlify.app
 
    I went ahead and filtered all the names that matched the pokemons in the redux store and narrowed it down to match search phrase. When user chooses a specific one, I make an api call to pick its details and show the user that pokemon's details.
 
+## Endpoints
+- `/pokemons/page/:pageNumber` to view pokemons on a given page
+- `/` to view pokemons for first page
+- `/pokemon/:pokemonName` to view specific pokemon details.
+
 ## Potential improvements
 - Find a better way to handle search since picking all the pokemons, isn't the best approach.
 - Cross Browser compatibility. I didn't take time to add polyfills for some functionality that wouldn't work as expected in other Browsers other than Chrome.
-- Improve error handling for when api calls fail and if user navigates to particular pokemon page by url directly.
 - Implement clicking on types tiles to filter all pokemons with similar types or moves
-   
+- Add image loaders.
+- Make the hosted link working on ios devices
