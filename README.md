@@ -2,12 +2,20 @@
 # Pokémon Challenge
 
 This project allows users to view Pokémons and their characteristics with the ability to search for a specific one.
+Endpoint: list-pokemons.netlify.app
 
 ## Tools Used
 - Typescript
 - React
 - Redux and Redux Persist
 - Axios and Axios Cache Adapter
+- Material UI
+
+## Setup
+- clone this repository
+- cd into directory
+- run `yarn`
+- run  `yarn start`
 
 ## Approach per feature
 - #### Fetch All Pokemons:
