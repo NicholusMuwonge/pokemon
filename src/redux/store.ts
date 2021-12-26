@@ -9,8 +9,12 @@ const persistConfig = {
     key: 'root',
     storage,
   }
+
+const enhancers = process.env.NODE_ENV === 'production'
+? applyMiddleware(thunk)
+: composeWithDevTools(applyMiddleware(thunk));
 const persistedReducer = persistReducer(persistConfig, RootReducer)
-const Store = createStore(persistedReducer, composeWithDevTools(applyMiddleware(thunk)));
+const Store = createStore(persistedReducer, enhancers);
 
 export type RootStore = ReturnType<typeof RootReducer>
 export let Persistor = persistStore(Store)
