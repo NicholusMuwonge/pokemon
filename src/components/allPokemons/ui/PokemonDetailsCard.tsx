@@ -17,9 +17,10 @@ const PokemonDetailsCard = ({ name, image, abilities }: pokemonDetailsType) => {
   
   return (
     <Paper
-      className="parent"
+      className="pokemon-card"
       elevation={6}
       style={pokemonCardStyles.cardContainer}
+      onClick={()=>navigate(`/pokemon/${name}`,  {state: {from: page??'1'}})}
     >
       <div style={pokemonCardStyles.imageTileContainer}>
         {loading ? (
@@ -51,7 +52,6 @@ const PokemonDetailsCard = ({ name, image, abilities }: pokemonDetailsType) => {
       <Paper
         style={pokemonCardStyles.bottomSection}
         elevation={0}
-        onClick={()=>navigate(`/pokemon/${name}`,  {state: {from: page??'1'}})}
       >
         <div style={pokemonCardStyles.typesContainer}>
         <b style={{marginRight: "2%"}}>Ability</b>{"  "}
