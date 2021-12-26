@@ -22,6 +22,7 @@ export const pokemonCardStyles = {
     backgroundColor: "#f0f8ff26",
     width: "auto",
     height: "auto",
+    cursor: "pointer"
   },
   imageTileContainer: { display: "flex", justifyContent: "center" },
   skeletonLoaderStyle: {
