@@ -12,6 +12,8 @@ export const allPokemonsStyles = {
     gridGap: "2rem",
     alignSelf: "center",
   },
+  loading: {textAlign: "center" as const, fontFamily: "pokemon", fontSize:20, fontWeight:"100"},
+  error: {textAlign: "center" as const, color:"red",fontFamily: "pokemon", fontSize:20, fontWeight:"100"}
 };
 
 export const pokemonCardStyles = {
