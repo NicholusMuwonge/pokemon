@@ -13,6 +13,9 @@ const Api = {
   getSinglePokemonDetails(pokemonId: { pokemonId: Number }) {
     return axiosConfig.get(`/pokemon/${pokemonId}/`);
   },
+  getSinglePokemonDetailsByName(pokemonName:string) {
+    return axiosConfig.get(`/pokemon/${pokemonName}/`);
+  },
 };
 
 export default Api;
