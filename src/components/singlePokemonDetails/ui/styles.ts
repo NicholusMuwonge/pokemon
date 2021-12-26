@@ -80,5 +80,7 @@ export const detailsScreenHeaderStyles={
     appBarContainer: { backgroundColor: "#fff", maxWidth: "100%", position: "relative" as const },
     ArrowBackIcon: { color: "black" },
     appBarLogoContainer: { flex: 1, alignItems: "center" },
-    appBarLogo: { width: "200px", height: "100px", marginTop: "-2%", cursor:"pointer" }
+    appBarLogo: { width: "200px", height: "100px", marginTop: "-2%", cursor:"pointer", marginLeft:"5%" },
+    closeButtonStyle: {backgroundColor:"#4874f4", border:"none", padding:"6px", paddingLeft:"10px", paddingRight:"10px", cursor:"pointer", borderRadius:"10rem"},
+    closeButtonText:{fontSize:18, color:"yellow"}
 }

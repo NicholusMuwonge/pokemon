@@ -27,7 +27,7 @@ const SearchBarContainer = () => {
       dispatch(getSearchoptionData([value?.url]));
       navigate(`/pokemon/${value?.name}`, { state: { from: page ?? "1" } });
     }
-  }, [value, dispatch]);
+  }, [value, dispatch, navigate, page]);
 
   const onChange = (event: any, newValue: pokemonObj): void =>
     setValue(newValue);
