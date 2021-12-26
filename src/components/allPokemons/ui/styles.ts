@@ -39,7 +39,7 @@ export const pokemonCardStyles = {
   typesContainer: {
     textAlign: "left" as const,
     textTransform: "capitalize" as const,
-    paddingLeft: "10%",
+    paddingLeft: "5%",
     marginTop: "2%",
     display: "flex",
     alignItems: "center"

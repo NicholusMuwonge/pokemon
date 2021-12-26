@@ -27,7 +27,7 @@ const AllPokemonsComponent: React.FC<{ allPokemons: resultsType }> = ({
                 <PokemonDetailsCard
                   name={pokemon?.name}
                   image={pokemon?.image}
-                  types={pokemon?.types}
+                  abilities={pokemon?.abilities?.slice(0,2)}
                   key={`${pokemon?.name}`}
                 />
               ))

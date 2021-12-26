@@ -37,7 +37,7 @@ const AllPokemonsContainer: React.FC = () => {
       ) : (
         <>
           <AllPokemonsComponent allPokemons={allPokemons} />
-          <PaginationContainer />
+          {allPokemons.length ? <PaginationContainer />:null}
         </>
       )}
     </>
