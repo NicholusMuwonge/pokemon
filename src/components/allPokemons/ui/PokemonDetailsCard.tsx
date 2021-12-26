@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 import { pokemonCardStyles } from "./styles";
 import { useNavigate, useParams } from "react-router-dom";
 
-const PokemonDetailsCard = ({ name, image, types }: pokemonDetailsType) => {
+const PokemonDetailsCard = ({ name, image, abilities }: pokemonDetailsType) => {
   const loading = useSelector(
     (centralState: RootStore) => centralState.pokemons.loading
   );
@@ -54,18 +54,18 @@ const PokemonDetailsCard = ({ name, image, types }: pokemonDetailsType) => {
         onClick={()=>navigate(`/pokemon/${name}`,  {state: {from: page??'1'}})}
       >
         <div style={pokemonCardStyles.typesContainer}>
-        <b style={{marginRight: "5%"}}>Types</b>{"  "}
-        {types ? (
-          types.map((type) => (
+        <b style={{marginRight: "2%"}}>Ability</b>{"  "}
+        {abilities ? (
+          abilities.map((ability) => (
             <Chip
-              label={type.type.name}
+              label={ability.ability.name}
               style={pokemonCardStyles.typeChipStyle}
               variant="outlined"
-              key={`${type.type.name}`}
+              key={`${ability.ability.name}`}
             />
           ))
         ) : (
-          <Skeleton variant="text" width={200} height={50} />
+          <Skeleton variant="text" width={180} height={50} />
         )}
       </div>
         <div style={pokemonCardStyles.redirectIconContainer}>

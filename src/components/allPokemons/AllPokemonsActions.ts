@@ -64,7 +64,6 @@ export const getAllPokemons = ({
       dispatch({ type: POKEMON_SUCCESS, payload: res, count: response.data.count });
     }
   } catch (err: any) {
-    console.log(err,"THEHEHHEHEHHEE");
     
     dispatch({
       type: POKEMON_FAIL,
